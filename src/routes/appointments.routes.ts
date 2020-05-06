@@ -5,6 +5,12 @@ import AppointmentsRepository from '../repositories/AppointmentsRepository';
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
 
+appointmentsRouter.get('/', (request, response) => {
+  const appointments = appointmentsRepository.all();
+
+  return response.json(appointments);
+});
+
 appointmentsRouter.post('/', (request, response) => {
   const { provider, date } = request.body;
 
@@ -16,7 +22,7 @@ appointmentsRouter.post('/', (request, response) => {
 
   if (findAppointmentInSameDate) {
     return response
-      .status(401)
+      .status(400)
       .json({ error: 'We already got a schedule at this hour. Sorry.' });
   }
 

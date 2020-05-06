@@ -4,12 +4,12 @@ import Appointment from '../models/Appointment';
 class AppointmentRepository {
   private appointments: Appointment[];
 
-  public create(provider: string, date: Date): Appointment | null {
-    const appointment = new Appointment(provider, date);
+  constructor() {
+    this.appointments = [];
+  }
 
-    this.appointments.push(appointment);
-
-    return appointment;
+  public all(): Appointment[] {
+    return this.appointments;
   }
 
   public findByDate(date: Date): Appointment | null {
@@ -20,8 +20,12 @@ class AppointmentRepository {
     return findAppointment || null;
   }
 
-  constructor() {
-    this.appointments = [];
+  public create(provider: string, date: Date): Appointment | null {
+    const appointment = new Appointment(provider, date);
+
+    this.appointments.push(appointment);
+
+    return appointment;
   }
 }
 
