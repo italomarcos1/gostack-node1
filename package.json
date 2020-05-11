@@ -8,11 +8,15 @@
   "scripts": {
     "build": "tsc",
     "dev:server": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
-    "ln": "yarn eslint --fix src --ext .ts"
+    "ln": "yarn eslint --fix src --ext .ts",
+    "start": "ts-node src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "date-fns": "^2.12.0",
     "express": "^4.17.1",
+    "pg": "^8.1.0",
+    "typeorm": "^0.2.24",
     "uuidv4": "^6.0.8"
   },
   "devDependencies": {
