@@ -10,9 +10,10 @@ interface Request {
 
 class CreateAppointmentService {
   public async execute({ provider, date }: Request): Promise<Appointment> {
+    const appointmentsRepository = getCustomRepository(AppointmentsRepository);
+
     const appointmentDate = startOfHour(date);
 
-    const appointmentsRepository = getCustomRepository(AppointmentsRepository);
     const findAppointmentInSameDate = await appointmentsRepository.findByDate(
       appointmentDate,
     );
@@ -21,7 +22,7 @@ class CreateAppointmentService {
       throw Error('This appointment has been taken.');
     }
 
-    const appointment = await appointmentsRepository.create({
+    const appointment = appointmentsRepository.create({
       provider,
       date: appointmentDate,
     });
