@@ -9,9 +9,13 @@ appointmentsRouter.post('/', async (request, response) => {
 
     const createUser = new CreateUserService();
 
-    const user = await createUser.execute({ name, email, password });
+    const { id, created_at } = await createUser.execute({
+      name,
+      email,
+      password,
+    });
 
-    return response.json(user);
+    return response.json({ id, name, email, created_at });
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }
