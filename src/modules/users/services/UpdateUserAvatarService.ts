@@ -1,10 +1,10 @@
 import { getRepository } from 'typeorm';
 import path from 'path';
 import fs from 'fs';
-import AppError from '../errors/AppError';
-import User from '../models/User';
+import User from '@modules/users/infra/typeorm/entities/User';
+import AppError from '@shared/errors/AppError';
 
-import multerConfig from '../config/multer';
+import multerConfig from '@config/multer';
 
 interface Request {
   user_id: string;
