@@ -9,8 +9,7 @@
     "build": "tsc",
     "dev:server": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
     "ln": "yarn eslint --fix src --ext .ts",
-    "start": "ts-node src/index.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "start": "ts-node src/index.ts"
   },
   "dependencies": {
     "date-fns": "^2.14.0",

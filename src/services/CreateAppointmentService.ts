@@ -14,7 +14,7 @@ class CreateAppointmentService {
     this.appointmentsRepository = appointmentsRepository;
   }
 
-  public async execute({ provider, date }: Request): Promise<Appointment> {
+  public execute({ provider, date }: Request): Appointment {
     const appointmentDate = startOfHour(date);
     const alreadyBooked = this.appointmentsRepository.findByDate(
       appointmentDate,
@@ -26,7 +26,7 @@ class CreateAppointmentService {
 
     const appointment = this.appointmentsRepository.create({
       provider,
-      date,
+      date: appointmentDate,
     });
 
     return appointment;
