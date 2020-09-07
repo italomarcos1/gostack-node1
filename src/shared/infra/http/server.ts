@@ -3,12 +3,11 @@ import 'reflect-metadata';
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 
-import uploadConfig from './config/multer';
+import uploadConfig from '@config/multer';
+import AppError from '@shared/errors/AppError';
 import routes from './routes';
 
-import AppError from './errors/AppError';
-
-import './database';
+import '@shared/typeorm';
 
 const app = express();
 app.use(express.json());
